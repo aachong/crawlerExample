@@ -9,7 +9,7 @@ def getContent(url):
     return requests.get(url, headers=headers).text
 
 
-content = getContent('https://cn.element14.com/')
+content = getContent('https://wenku.baidu.com/view/4e0f7c65a88271fe910ef12d2af90242a895ab42.html')
 content
 soup = BeautifulSoup(content, 'html.parser')
 
@@ -24,14 +24,14 @@ tag.name
 # 查看获取部分的内容
 tag.string
 
-catalogue = soup.find_all('li',role= 'menuitem')
+catalogue = soup.find_all('p')
+catalogue
 for i in catalogue:
-    if i.string!=None:
+    if i.string != None:
         print(i.string)
 
 for i in catalogue:
     try:
-        print(i.a.string)
+        print(i.a.string.strip())
     except:
         pass
-
